@@ -7,7 +7,7 @@ Created on Fri Feb  3 18:15:57 2023
 
 import os
 import random
-import winsound
+#import winsound
 
 import matplotlib as mpl
 import matplotlib.pyplot as plt
@@ -254,10 +254,10 @@ def tuplesToVec(list_of_tuples: list[tuple]):
     return vec1, vec2
 
 
-def beepFinished(mario: bool = False):
-    """
+""" def beepFinished(mario: bool = False):
+    
     Emits a Super Mario sound if mario is true, a default sound otherwise.
-    """
+    
     # SUPER MARIO BEEP
     if mario:
         winsound.Beep(1047, 300)
@@ -272,7 +272,7 @@ def beepFinished(mario: bool = False):
     # DEFAULT SOUND
     else:
         winsound.PlaySound("*", winsound.SND_ALIAS)
-    return
+    return """
 
 
 def ensureDirectoryExists(path: str):

@@ -21,6 +21,7 @@ class Session:
         self.date = date.today().strftime("%Y_%m_%d")
         dp.ensureDirectoryExists(f"{self.savepath}/{self.sample}")
         self.num = dp.findMaxNum(f"{self.savepath}/{self.sample}")
+        print(self.savepath)
 
     def setSave(self, savepath: str, lab: str, sample: str, cell: str):
         self.savepath = savepath
