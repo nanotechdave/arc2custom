@@ -27,7 +27,7 @@ def first_non_nan(vector: np.array):
 def generate_random_array(x, vmin, vmax):
     return np.round(np.random.uniform(vmin, vmax, x), 3)
 
-def loadToml(self, filename) -> dict:
+def loadToml(filename) -> dict:
         """Load toml data from file"""
 
         with open(filename, "rb") as f:
