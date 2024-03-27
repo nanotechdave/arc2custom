@@ -111,6 +111,7 @@ class Experiment:
         return
 
 
+
 # ------------------------------ MAYBE USEFUL CODE FOR FAST PULSING --------------
 # def runPulse(self, settings: MeasurementSettings):
 

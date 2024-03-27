@@ -2,5 +2,5 @@
 
 savepath = "C:/Users/g.milano/Desktop/Davide/ARC"
 lab = "INRiMARC"
-sample = "NWN_Pad122M"
+sample = "testcode"
 cell = "gridSE"

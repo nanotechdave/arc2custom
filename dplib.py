@@ -15,6 +15,7 @@ import numpy as np
 import pandas as pd
 import math
 from scipy import signal
+import tomli
 
 
 def first_non_nan(vector: np.array):
@@ -26,7 +27,13 @@ def first_non_nan(vector: np.array):
 def generate_random_array(x, vmin, vmax):
     return np.round(np.random.uniform(vmin, vmax, x), 3)
 
+def loadToml(self, filename) -> dict:
+        """Load toml data from file"""
 
+        with open(filename, "rb") as f:
+            toml_data: dict = tomli.load(f)
+            return toml_data
+        
 def generate_constant_voltage(total_time, sampling_time, voltage):
     """
     Generates two vectors: one with timestamps and the other with a constant voltage value.

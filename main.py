@@ -22,12 +22,6 @@ def main(args=None):
     arc = dparclib.initialize_instrument(firmware_release="efm03_20220905.bin")
 
     # ----------------------- SAVING SETTINGS - --------------------------------
-    '''session = sessionmod.Session(
-        savepath="D:\Desktop\Test",
-        lab="INRiMJanis",
-        sample="NWN_Pad78M",
-        cell="grid_SE",
-    )'''
     
     session = sessionmod.Session()
     
@@ -225,7 +219,7 @@ def main(args=None):
                 v_read=0.1,
                 n_reps_avg=1,
             )
-    
+    tomography.run()
     
     """   
     if mat.testConnections():
