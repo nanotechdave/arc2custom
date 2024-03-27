@@ -5,17 +5,16 @@ import numpy as np
 import pyarc2
 
 import dparclib, dplib, fwutils, measurementsettings, sessionmod
-from experiments.experiment import (
-    ConductivityMatrix,
-    Experiment,
-    IVMeasurement,
-    MemoryCapacity,
-    NoiseMeasurement,
-    PulseMeasurement,
-    ReservoirComputing,
-    Tomography,
-    TurnOn,
-)
+from experiments.experiment import Experiment
+from experiments.conductivitymatrix import ConductivityMatrix
+from experiments.ivmeasurement import IVMeasurement
+from experiments.memorycapacity import MemoryCapacity
+from experiments.noisemeasurement import NoiseMeasurement
+from experiments.pulsemeasurement import PulseMeasurement
+from experiments.reservoircomputing import ReservoirComputing
+from experiments.tomography import Tomography
+from experiments.turnon import TurnOn
+
 import memorycapacity
 
 
