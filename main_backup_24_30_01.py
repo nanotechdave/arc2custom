@@ -4,8 +4,8 @@ import time
 import numpy as np
 import pyarc2
 
-from arc2custom import dparclib, dplib, fwutils, measurementsettings, sessionmod
-from arc2custom.experiment import (
+import dparclib, dplib, fwutils, measurementsettings, sessionmod
+from experiment import (
     ConductivityMatrix,
     Experiment,
     IVMeasurement,

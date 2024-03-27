@@ -5,7 +5,7 @@ Created on Fri Feb  3 18:17:44 2023
 @author: Davide Pilati
 """
 from datetime import date
-import arc2custom.dplib as dp
+import dplib as dp
 import numpy as np
 
 

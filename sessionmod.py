@@ -5,7 +5,7 @@ Created on Mon Feb 20 10:28:38 2023
 @author: Davide Pilati
 """
 from datetime import date
-import arc2custom.dplib as dp
+import dplib as dp
 
 
 class Session:

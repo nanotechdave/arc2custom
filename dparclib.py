@@ -6,15 +6,16 @@ Created on Fri Feb  3 18:17:18 2023
 """
 
 import pyarc2
-from arc2custom import fwutils
+import fwutils
 import numpy as np
 import time
 import sys
-from arc2custom import experiment
-from arc2custom import measurementsettings
-from arc2custom import dplib
+import experiment
+import measurementsettings
+import dplib
 import math
 import os
+
 
 ALL_CHANNELS = list(range(64))
 
