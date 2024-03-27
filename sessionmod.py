@@ -6,20 +6,18 @@ Created on Mon Feb 20 10:28:38 2023
 """
 from datetime import date
 import dplib as dp
+import tomli
 
 
 class Session:
     def __init__(
         self,
-        savepath: str = "C:/Users/mcfab/Desktop/Measurements",
-        lab: str = "INRiMC110",
-        sample: str = "NWN_Pad44D",
-        cell: str = "13N3-17S3-14W3-16E3",
     ):
-        self.savepath = savepath
-        self.lab = lab
-        self.sample = sample
-        self.cell = cell
+        settings = self.loadToml("config/save_config.toml","rb")
+        self.savepath = settings["savepath"]
+        self.lab = settings["lab"]
+        self.sample = settings["sample"]
+        self.cell = settings["cell"]
         self.date = date.today().strftime("%Y_%m_%d")
         dp.ensureDirectoryExists(f"{self.savepath}/{self.sample}")
         self.num = dp.findMaxNum(f"{self.savepath}/{self.sample}")
@@ -36,3 +34,11 @@ class Session:
     def dateUpdate(self):
         self.date = date.today().strftime("%Y_%m_%d")
         return
+    
+    def loadToml(filename) -> dict:
+        """Load toml data from file"""
+
+        with open(filename, "rb") as f:
+            toml_data: dict = tomli.load(f)
+            return toml_data
+

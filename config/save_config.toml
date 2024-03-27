@@ -1,0 +1,6 @@
+#savepath configuration
+
+savepath = "C:/Users/mcfab/Desktop/Measurements"
+lab = "INRiMARC"
+sample = "NWN_Pad122M"
+cell = "gridSE"

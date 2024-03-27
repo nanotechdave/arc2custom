@@ -29,12 +29,7 @@ def main(args=None):
         cell="grid_SE",
     )'''
     
-    session = sessionmod.Session(
-        savepath="C:/Users/g.milano/Desktop/Davide/ARC",
-        lab="INRiMARC",
-        sample="FTO_QN02",
-        cell="grid",
-    )
+    session = sessionmod.Session()
     
     # ------------------------ ROUTINES INITIALIZATION -------------------------
     mat = ConductivityMatrix(arc, "Conductivity Matrix", session)
