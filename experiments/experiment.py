@@ -13,9 +13,9 @@ from datetime import date
 import numpy as np
 import pyarc2
 
-import dparclib as dparc
-import dplib as dp
-import measurementsettings, sessionmod
+from arc2custom import dparclib as dparc
+from arc2custom import dplib as dp
+from arc2custom import measurementsettings, sessionmod
 
 
 class Experiment:

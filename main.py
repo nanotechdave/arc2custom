@@ -4,18 +4,18 @@ import time
 import numpy as np
 import pyarc2
 
-import dparclib, dplib, fwutils, measurementsettings, sessionmod
-from experiments.experiment import Experiment
-from experiments.conductivitymatrix import ConductivityMatrix
-from experiments.ivmeasurement import IVMeasurement
-from experiments.memorycapacity import MemoryCapacity
-from experiments.noisemeasurement import NoiseMeasurement
-from experiments.pulsemeasurement import PulseMeasurement
-from experiments.reservoircomputing import ReservoirComputing
-from experiments.tomography import Tomography
-from experiments.turnon import TurnOn
+from arc2custom import dparclib, dplib, fwutils, measurementsettings, sessionmod
+from .experiments.experiment import Experiment
+from .experiments.conductivitymatrix import ConductivityMatrix
+from .experiments.ivmeasurement import IVMeasurement
+from .experiments.memorycapacity import MemoryCapacity
+from .experiments.noisemeasurement import NoiseMeasurement
+from .experiments.pulsemeasurement import PulseMeasurement
+from .experiments.reservoircomputing import ReservoirComputing
+from .experiments.tomography import Tomography
+from .experiments.turnon import TurnOn
 
-import memorycapacity
+from arc2custom import memorycapacity
 
 
 def main(args=None):
@@ -226,7 +226,7 @@ def main(args=None):
                 n_reps_avg=1,
             )
     
-    tomography.run()
+    
     """   
     if mat.testConnections():
         

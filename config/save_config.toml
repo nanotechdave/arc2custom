@@ -1,6 +1,6 @@
 #savepath configuration
 
-savepath = "C:/Users/mcfab/Desktop/Measurements"
+savepath = "C:/Users/g.milano/Desktop/Davide/ARC"
 lab = "INRiMARC"
 sample = "NWN_Pad122M"
 cell = "gridSE"

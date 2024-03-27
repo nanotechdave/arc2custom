@@ -4,8 +4,10 @@ Created on Mon Feb 20 10:28:38 2023
 
 @author: Davide Pilati
 """
+
+from pathlib import Path
 from datetime import date
-import dplib as dp
+from arc2custom import dplib as dp
 import tomli
 
 
@@ -13,12 +15,14 @@ class Session:
     def __init__(
         self,
     ):
-        settings = self.loadToml("config/save_config.toml","rb")
-        self.savepath = settings["savepath"]
-        self.lab = settings["lab"]
-        self.sample = settings["sample"]
-        self.cell = settings["cell"]
+        self.parentpath = Path(__file__).resolve().parent
+        self.settings = self.loadToml(filename =f"{self.parentpath}/config/save_config.toml")
+        self.savepath = self.settings["savepath"]
+        self.lab = self.settings["lab"]
+        self.sample = self.settings["sample"]
+        self.cell = self.settings["cell"]
         self.date = date.today().strftime("%Y_%m_%d")
+        print(self.savepath)
         dp.ensureDirectoryExists(f"{self.savepath}/{self.sample}")
         self.num = dp.findMaxNum(f"{self.savepath}/{self.sample}")
         print(self.savepath)
@@ -36,7 +40,7 @@ class Session:
         self.date = date.today().strftime("%Y_%m_%d")
         return
     
-    def loadToml(filename) -> dict:
+    def loadToml(self, filename) -> dict:
         """Load toml data from file"""
 
         with open(filename, "rb") as f:

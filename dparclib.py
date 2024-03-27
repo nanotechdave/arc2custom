@@ -6,13 +6,13 @@ Created on Fri Feb  3 18:17:18 2023
 """
 
 import pyarc2
-import fwutils
+from arc2custom import fwutils
 import numpy as np
 import time
 import sys
-import experiments.experiment as experiment
-import measurementsettings
-import dplib
+from .experiments.experiment import Experiment
+from . import measurementsettings
+from . import dplib
 import math
 import os
 
