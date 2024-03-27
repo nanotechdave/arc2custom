@@ -5,7 +5,7 @@ import numpy as np
 import pyarc2
 
 import dparclib, dplib, fwutils, measurementsettings, sessionmod
-from experiment import (
+from experiments.experiment import (
     ConductivityMatrix,
     Experiment,
     IVMeasurement,

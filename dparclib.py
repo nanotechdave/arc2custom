@@ -10,7 +10,7 @@ import fwutils
 import numpy as np
 import time
 import sys
-import experiment
+import experiments.experiment as experiment
 import measurementsettings
 import dplib
 import math
