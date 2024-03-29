@@ -225,7 +225,7 @@ def main(args=None):
     if mat.testConnections():
         
         
-        for i in range(10):
+        for i in range(30):
             mat.run()
             tomography.run()
             constant.customWave(
@@ -249,14 +249,14 @@ def main(args=None):
             if MCvalue>bestMCValue:
                 bestMCValue = MCvalue
                 bestIdx = i
-            MCsampletime += 0.1
+            #MCsampletime += 0.1
             mem.setMeasurement(
                 sample_time=MCsampletime,
                 n_samples = 3000,
                 v_read=0.1,
                 n_reps_avg=1,
             )
-            crit_bias += 0.5
+            crit_bias += 0.2
             time.sleep(1800)   
    
    

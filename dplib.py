@@ -540,4 +540,4 @@ def plot_volt_diff(file_path, vread):
     axs[2].grid(visible=True)
 
     plt.tight_layout()
-    plt.show()
+    plt.savefig(f"{path}_Vdiff.png", dpi=300)
