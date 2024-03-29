@@ -156,10 +156,10 @@ def main(args=None):
 
     tomography = Tomography(arc, "Tomography", session)
     tomography.setMaskSettings(
-        mask_to_bias=[40],
-        mask_to_gnd=[55],
-        mask_to_read_v=np.arange(40, 56),
-        mask_to_read_i=[40, 55],
+        mask_to_bias=[8],
+        mask_to_gnd=[23],
+        mask_to_read_v=np.arange(8, 24),
+        mask_to_read_i=[8, 23],
     )
     tomography.setMeasurement(
         sample_time=0.1,
@@ -208,7 +208,7 @@ def main(args=None):
 
     # -----------------------RUN SEQUENCE---------------------------------------
     
-    crit_bias = 1
+    crit_bias = 0.5
     crit_amp = 0.3
     MCsampletime = 0.2
     bestMCValue = 0
@@ -219,14 +219,15 @@ def main(args=None):
                 v_read=0.1,
                 n_reps_avg=1,
             )
-    tomography.run()
     
-    """   
+    
+     
     if mat.testConnections():
         
         
-        for i in range(8):
+        for i in range(10):
             mat.run()
+            tomography.run()
             constant.customWave(
                     voltage_times_tuple_array=dplib.generate_constant_voltage(
                         total_time=60, sampling_time=0.01, voltage=crit_bias
@@ -256,6 +257,6 @@ def main(args=None):
                 n_reps_avg=1,
             )
             crit_bias += 0.5
-            time.sleep(1800)     """
+            time.sleep(1800)   
    
    
