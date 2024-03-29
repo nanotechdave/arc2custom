@@ -479,12 +479,13 @@ def plot_volt_diff(file_path, vread):
     voltage_diff_vector = []
     transresistance_vector = []
     channel_pairs = []
-
+    vbias_vector = []
+    current_vector = []
     # Calculate voltage differences row by row
     for idx, row in df.iterrows():
         nan_current_cols = [col for col in current_cols if np.isnan(row[col])]
         not_nan_current_cols = [col for col in current_cols if not np.isnan(row[col])]
-
+        
         voltage_cols_for_nan_current = [
             col.replace("_I[A]", "_V[V]") for col in nan_current_cols
         ]
@@ -492,34 +493,51 @@ def plot_volt_diff(file_path, vread):
             col.replace("_I[A]", "_V[V]") for col in not_nan_current_cols
         ]
         current_cols_for_not_nan_current = [col for col in not_nan_current_cols]
-
-        voltage_diff_row = np.diff(row[voltage_cols_for_nan_current])
+        voltage_shifted = np.append(voltage_cols[idx:],voltage_cols[:idx])
+        
+        voltagerow= np.append(row[voltage_shifted], [row[voltage_shifted[0]]])
+        
+        
+        voltage_diff_row = np.diff(voltagerow)
         voltage_diff_vector.extend(voltage_diff_row)
-
+        
         current = row[current_cols_for_not_nan_current[0]]
+        for _ in range(16):
+            vbias_vector = np.append(vbias_vector, -voltage_diff_row[0])
+            current_vector = np.append(current_vector, current)
+        
         transresistance_row = (
-            abs(voltage_diff_row / current) if current != 0 else np.nan
+            voltage_diff_row / current if current != 0 else np.nan
         )
-        print(transresistance_row)
+        
         transresistance_vector.extend(transresistance_row)
-
-        # Get the name of the pairs for the plot
-        pairs_row = [
-            f'{voltage_cols_for_nan_current[i].split("_")[0]}-{voltage_cols_for_nan_current[i+1].split("_")[0]} ({", ".join([vc.split("_")[0] for vc in voltage_cols_for_not_nan_current])})'
-            for i in range(len(voltage_cols_for_nan_current) - 1)
-        ]
-        channel_pairs.extend(pairs_row)
+        
 
     # Plot
     path = file_path.rsplit(".", 1)[0]
     titleText = path.split("/")[-1].rsplit(".", 1)[0]
-    plt.figure(figsize=(12, 6))
-    plt.plot(transresistance_vector)
-    plt.xticks(
-        range(len(channel_pairs)), channel_pairs, rotation="vertical", fontsize=2
-    )
-    plt.xlabel("Channel pairs")
-    plt.ylabel("Transresistance")
-    plt.title(f"{titleText}, {vread}V")
+
+    fig, axs = plt.subplots(3, 1, figsize=(12, 8))  # 3 rows, 1 column
+
+    fig.suptitle(f"{titleText}, {vread}V")
+    # Plotting on the first subplot
+    axs[0].plot(transresistance_vector)
+    axs[0].set_xlabel("Measurement #")
+    axs[0].set_ylabel("Transresistance / Ohm")
+    axs[0].set_title(f"Transresistance")
+    axs[0].grid(visible=True)
+    
+    axs[1].plot(voltage_diff_vector)
+    axs[1].set_xlabel("Measurement #")
+    axs[1].set_ylabel("Voltage / V")
+    axs[1].set_title(f"Vsense")
+    axs[1].grid(visible=True)
+    
+    axs[2].plot(current_vector)
+    axs[2].set_xlabel("Measurement #")
+    axs[2].set_ylabel("Current / A")
+    axs[2].set_title(f"Currents")
+    axs[2].grid(visible=True)
+
     plt.tight_layout()
-    plt.savefig(f"{path}_Vdiff.png", dpi=300)
+    plt.show()
